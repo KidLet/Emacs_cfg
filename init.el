@@ -29,3 +29,14 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
+
+; set the font for windows
+(if (eq "windows-nt" system-type)
+(progn
+(set-face-attribute
+  'default nil :font "Monaco-11") ;设置默认字体
+(set-fontset-font
+    (frame-parameter nil 'font)
+    'han
+    (font-spec :family "微软雅黑" :size 15)) ;设置汉字字体
+))
