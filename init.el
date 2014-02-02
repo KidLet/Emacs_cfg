@@ -17,6 +17,7 @@
     (color-theme-initialize)
     (require 'color-theme-solarized)
     (color-theme-solarized-dark)))
+(setq solarized-termcolor 256)
 
 ; auto complete
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1/")
