@@ -26,6 +26,11 @@
 (setq solarized-termcolor 256)
 
 (global-linum-mode 1) ; always show line numbers
+(setq linum-format "%3d ")
+
+; highligt line
+(require 'hl-line)
+(global-hl-line-mode t)        
 
 ; auto complete
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1/")
@@ -53,6 +58,10 @@
 ; change the key bind for set-mark form C-Space
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
+; scroll smoothly
+        (setq scroll-margin 5
+        scroll-conservatively 10000)        
+        
 ; js2-mode
 (add-to-list 'load-path' "~/.emacs.d/plugins/js2mode")
 (autoload 'js2-mode "js2-mode" nil t)
@@ -111,3 +120,60 @@
 (electric-pair-mode t)
 ;;特定条件下插入新行
 ;(electric-layout-mode t)
+
+(add-to-list 'load-path "~/.emacs.d/plugins/tabbar")
+(require 'tabbar)
+        (tabbar-mode 1)
+
+
+
+;; Tabbar settings
+        (set-face-attribute
+         'tabbar-default nil
+         :background "gray20"
+         :foreground "gray20"
+         :box '(:line-width 1 :color "gray20" :style nil))
+        (set-face-attribute
+         'tabbar-unselected nil
+         :background "gray30"
+         :foreground "white"
+         :box '(:line-width 5 :color "gray30" :style nil))
+        (set-face-attribute
+         'tabbar-selected nil
+         :background "gray75"
+         :foreground "black"
+         :box '(:line-width 5 :color "gray75" :style nil))
+        (set-face-attribute
+         'tabbar-highlight nil
+         :background "white"
+         :foreground "black"
+         :underline nil
+         :box '(:line-width 5 :color "white" :style nil))
+        (set-face-attribute
+         'tabbar-button nil
+         :box '(:line-width 1 :color "gray20" :style nil))
+        (set-face-attribute
+         'tabbar-separator nil
+         :background "gray20"
+         :height 0.6)
+
+        ;; Change padding of the tabs
+        ;; we also need to set separator to avoid overlapping tabs by highlighted tabs
+        (custom-set-variables
+         '(tabbar-separator (quote (1.5))))
+        ;; adding spaces
+        (defun tabbar-buffer-tab-label (tab)
+          "Return a label for TAB.
+    That is, a string used to represent it on the tab bar."
+          (let ((label  (if tabbar--buffer-show-groups
+                            (format "[%s]  " (tabbar-tab-tabset tab))
+                          (format "%s  " (tabbar-tab-value tab)))))
+            ;; Unless the tab bar auto scrolls to keep the selected tab
+            ;; visible, shorten the tab label to keep as many tabs as possible
+            ;; in the visible area of the tab bar.
+            (if tabbar-auto-scroll-flag
+                label
+              (tabbar-shorten
+               label (max 1 (/ (window-width)
+                               (length (tabbar-view
+                                        (tabbar-current-tabset)))))))))
