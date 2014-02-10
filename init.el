@@ -19,6 +19,8 @@
     (color-theme-solarized-dark)))
 (setq solarized-termcolor 256)
 
+(global-linum-mode 1) ; always show line numbers
+
 ; auto complete
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1/")
 (require 'auto-complete-config)  
@@ -41,3 +43,14 @@
     (font-spec :family "Microsoft Yahei" :size 15))
 )
 )
+
+; change the key bind for set-mark form C-Space
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+
+; js2-mode
+(add-to-list 'load-path' "~/.emacs.d/plugins/js2mode")
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+; maximized at start
+(run-with-idle-timer 0.0 nil 'w32-send-sys-command 61488)
