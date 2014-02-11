@@ -1,4 +1,4 @@
-; color-theme
+ï»¿; color-theme
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0/themes")
 (require 'color-theme)
@@ -13,7 +13,7 @@
     ;; it's emacs24, so use built-in theme 
       ;(require 'solarized-dark-theme)
       (add-to-list 'custom-theme-load-path "~/.emacs.d/plugins/molokai-theme")
-      (setq molokai-theme-kit t)
+      ;(setq molokai-theme-kit t)
       (load-theme 'molokai t)
       
     )
@@ -66,28 +66,40 @@
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 
-;;¹Ø±Õ×Ô¶¯±£´æÄ£Ê½
+;;å…³é—­è‡ªåŠ¨ä¿å­˜æ¨¡å¼
 (setq auto-save-mode nil)
-;;²»Éú³É #filename# ÁÙÊ±ÎÄ¼ş
+;;ä¸ç”Ÿæˆ #filename# ä¸´æ—¶æ–‡ä»¶
 (setq auto-save-default nil)
 
-;;¹Ø±Õ×Ô¶¯±£´æÄ£Ê½
+;;å…³é—­è‡ªåŠ¨ä¿å­˜æ¨¡å¼
 (setq auto-save-mode nil)
-;;²»Éú³É #filename# ÁÙÊ±ÎÄ¼ş
+;;ä¸ç”Ÿæˆ #filename# ä¸´æ—¶æ–‡ä»¶
 (setq auto-save-default nil)
 
 (setq
- backup-by-copying t ; ×Ô¶¯±¸·İ
+ backup-by-copying t ; è‡ªåŠ¨å¤‡ä»½
  backup-directory-alist
- '(("." . "~/.emacs.d/backupfiles")) ; ×Ô¶¯±¸·İÔÚÄ¿Â¼"~/.saves"ÏÂ
- delete-old-versions t ; ×Ô¶¯É¾³ı¾ÉµÄ±¸·İÎÄ¼ş
- kept-new-versions 6 ; ±£Áô×î½üµÄ6¸ö±¸·İÎÄ¼ş
- kept-old-versions 2 ; ±£Áô×îÔçµÄ2¸ö±¸·İÎÄ¼ş
+ '(("." . "~/.emacs.d/backupfiles")) ; è‡ªåŠ¨å¤‡ä»½åœ¨ç›®å½•"~/.saves"ä¸‹
+ delete-old-versions t ; è‡ªåŠ¨åˆ é™¤æ—§çš„å¤‡ä»½æ–‡ä»¶
+ kept-new-versions 6 ; ä¿ç•™æœ€è¿‘çš„6ä¸ªå¤‡ä»½æ–‡ä»¶
+ kept-old-versions 2 ; ä¿ç•™æœ€æ—©çš„2ä¸ªå¤‡ä»½æ–‡ä»¶
  version-control t ; backup more times
 )
 
 
 ; set encode
-(setq default-buffer-file-coding-system 'utf-8)       ;Ä¬ÈÏbuffer±àÂëÊÇutf-8,(ĞÂÎÄ¼ş)
-(prefer-coding-system 'utf-8)   ;Ö¸¶¨ÎÄ¼ş±àÂëÓÅÏÈ,´ËÊ±bufferĞÂ½¨ºÍ¶ÁÈ¡¶¼Ä¬ÈÏÊÇutf-8,Ò²¿ÉÒÔM-x prefer-coding-system Ö»Ö´ĞĞÒ»´Î
+(setq default-buffer-file-coding-system 'utf-8)       ;é»˜è®¤bufferç¼–ç æ˜¯utf-8,(æ–°æ–‡ä»¶)
+(prefer-coding-system 'utf-8)   ;æŒ‡å®šæ–‡ä»¶ç¼–ç ä¼˜å…ˆ,æ­¤æ—¶bufferæ–°å»ºå’Œè¯»å–éƒ½é»˜è®¤æ˜¯utf-8,ä¹Ÿå¯ä»¥M-x prefer-coding-system åªæ‰§è¡Œä¸€æ¬¡
 
+;å®šåˆ¶C/C++ç¼©è¿›é£æ ¼
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (c-set-style "k&r")))
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (c-set-style "stroustrup")))
+ 
+
+;; è®¾ç½®ç¼©è¿›å­—ç¬¦æ•°
+(setq c-basic-offset 4)
+(global-set-key (kbd "RET") 'newline-and-indent)
