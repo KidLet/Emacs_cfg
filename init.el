@@ -1,5 +1,4 @@
 ﻿(add-to-list 'load-path "~/.emacs.d/config")
-
 (require 'init-theme)
 (require 'init-font)
 (require 'init-indent-line)
@@ -9,3 +8,4 @@
 (require 'init-other)
 (require 'init-tabbar)
 (require 'init-php-mode)
+(require 'init-autopair)
