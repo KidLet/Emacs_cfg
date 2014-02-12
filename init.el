@@ -8,4 +8,4 @@
 (require 'init-keyboard-bind)
 (require 'init-other)
 (require 'init-tabbar)
-
+(require 'init-php-mode)
