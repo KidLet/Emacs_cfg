@@ -22,5 +22,8 @@
  version-control t ; backup more times
 )
 
+; 让Shell支持Ansi 高亮
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on t)
 
 (provide 'init-other)

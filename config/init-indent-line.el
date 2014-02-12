@@ -1,16 +1,11 @@
-﻿;set indent
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
-
-;定制C/C++缩进风格
+﻿;定制C/C++缩进风格
 (add-hook 'c-mode-hook
           '(lambda ()
              (c-set-style "k&r")))
 (add-hook 'c++-mode-hook
           '(lambda ()
              (c-set-style "stroustrup")))
-             
+
 ;; 设置缩进字符数
 (setq c-basic-offset 4)
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -21,7 +16,8 @@
 ;;系统本身内置的智能自动补全括号
 (electric-pair-mode t)
 ;;特定条件下插入新行
-;(electric-layout-mode t)
+(electric-layout-mode t)
+
 
 
 (global-linum-mode 1) ; always show line numbers
@@ -29,6 +25,6 @@
 
 ; highligt line
 (require 'hl-line)
-(global-hl-line-mode t) 
+(global-hl-line-mode t)
 
 (provide 'init-indent-line)
