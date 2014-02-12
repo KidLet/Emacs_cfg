@@ -8,7 +8,10 @@
 
 ;; 设置缩进字符数
 (setq c-basic-offset 4)
-(global-set-key (kbd "RET") 'newline-and-indent)
+(setq tab-width 4
+	        indent-tabs-mode nil)
+
+;(global-set-key (kbd "RET") 'newline-and-indent)
 ;;使用易码肆24内嵌的功能：
 ;(require 'electric)
 ;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
