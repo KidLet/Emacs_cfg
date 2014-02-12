@@ -53,4 +53,16 @@ That is, a string used to represent it on the tab bar."
                            (length (tabbar-view
                                     (tabbar-current-tabset)))))))))
 
+; close default tabs，and move all files into one group
+(setq tabbar-buffer-list-function
+      (lambda ()
+        (remove-if
+         (lambda(buffer)
+           (find (aref (buffer-name buffer) 0) " *"))
+         (buffer-list))))
+(setq tabbar-buffer-groups-function
+      (lambda()(list "All")))
+(set-face-attribute 'tabbar-button nil)
+
+
 (provide 'init-tabbar)
