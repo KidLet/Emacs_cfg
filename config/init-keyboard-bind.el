@@ -2,6 +2,6 @@
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
 (global-set-key [(control tab)] 'tabbar-backward)  
-(global-set-key [(contral shift tab)] 'tabbar-forward)
+(global-set-key [(control shift tab)] 'tabbar-forward)
 
 (provide 'init-keyboard-bind)
