@@ -1,25 +1,22 @@
-﻿;定制C/C++缩进风格
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (c-set-style "stroustrup")))
-(add-hook 'c++-mode-hook
-          '(lambda ()
-             (c-set-style "stroustrup")))
-
-;; 设置缩进字符数
-(setq c-basic-offset 4)
-(setq tab-width 4
-	        indent-tabs-mode nil)
-
-(global-set-key (kbd "RET") 'newline-and-indent)
-;;使用易码肆24内嵌的功能：
+﻿;;使用emacs24内嵌的功能：
 ;(require 'electric)
-;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
 ;(electric-indent-mode t)
-;;系统本身内置的智能自动补全括号
-;(electric-pair-mode t)
-;;特定条件下插入新行
 ;(electric-layout-mode t)
+;(global-set-key (kbd "RET") 'newline-and-indent)
+
+(add-to-list 'load-path "~/.emacs.d/plugins/google-c-style")
+(require 'google-c-style)
+
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(add-hook 'cpp-mode-common-hook 'google-set-c-style)
+(add-hook 'cpp-mode-common-hook 'google-make-newline-indent)
+
+(setq c-basic-offset 4          ;; 基本缩进宽度
+      default-tab-width 4       ;; 默认Tab宽度
+	  tab-width 4
+	  indent-tabs-mode t)
+
 
 
 
