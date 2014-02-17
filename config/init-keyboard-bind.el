@@ -10,8 +10,8 @@
 (define-key global-map [select] 'end-of-line)
 
 ; compile
-(define-key global-map (kbd "<f5>") 'compile')
-(define-key global-map (kbd "<f6>") 'recompile')
+(define-key global-map (kbd "<f5>") 'compile)
+(define-key global-map (kbd "<f6>") 'recompile)
 
 
 
