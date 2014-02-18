@@ -9,3 +9,4 @@
 (require 'init-tabbar)
 (require 'init-php-mode)
 (require 'init-autopair)
+(require 'init-c++-mode)

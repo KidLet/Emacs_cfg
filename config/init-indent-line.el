@@ -1,7 +1,7 @@
 ﻿;定制C/C++缩进风格
 (add-hook 'c-mode-hook
           '(lambda ()
-             (c-set-style "k&r")))
+             (c-set-style "stroustrup")))
 (add-hook 'c++-mode-hook
           '(lambda ()
              (c-set-style "stroustrup")))
